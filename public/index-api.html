@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Opt consent tracking - PoC</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="api-calls.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<h2>Opt consent tracking - PoC</h2>
+<button onclick="$('#output').toggle();" class="btn btn-light">Display output</button>
+<div id="output" class="alert alert-secondary" style="width: 50%;display: none"></div>
+<div class="container">
+    <form id="opt-form">
+        <div class="form-group">
+            <label for="urn">Urn</label>
+            <input type="text" class="form-control" name="urn" id="urn" >
+        </div>
+        <div class="form-group">
+            <label for="optId">Opt id</label>
+            <input type="text" class="form-control" name="optId" id="optId" >
+        </div>
+        <div class="form-group">
+            <label for="action">Action</label>
+            <select name="action" id="action" class="form-control">
+                <option value="1">Opt-in</option>
+                <option value="2">Opt-out</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="optText">Opt text</label>
+            <textarea name="optText" class="form-control" id="optText" ></textarea><br>
+        </div>
+        <button onclick="addOptAction(); return false" class="btn btn-primary" >Create</button>
+    </form>
+    <hr/>
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="filter" class="col-form-label" style="margin-right: 20px;" >Search by</label>
+            <select name="filter" id="filter" class="form-control">
+                <option value="optActionId">Id</option>
+                <option value="urn">Urn</option>
+                <option value="optId">Opt id</option>
+            </select>
+        </div>
+        <div class="input-group m-2">
+            <input type="text" id="requestId" name="requestId" class="form-control" placeholder="Search for...">
+            <span class="input-group-btn">
+            <button class="btn btn-default" type="button" onclick="search()">Find</button>
+        </span>
+        </div>
+    </form>
+
+    <div id="search-results" class="mt-3" style="display:none" >
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Urn</th>
+                <th scope="col">Opt id</th>
+                <th scope="col">Action</th>
+                <th scope="col">Opt text</th>
+                <th scope="col">Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div id="no-results" style="display:none">No results ...</div>
+
+</div>
+
+</body>
+</html>

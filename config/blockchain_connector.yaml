@@ -1,0 +1,2 @@
+parameters:
+  blockchain_endpoint_url: '%env(BLOCKCHAIN_ENDPOINT_URL)%'

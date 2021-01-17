@@ -1,0 +1,2 @@
+parameters:
+    env(BLOCKCHAIN_ENDPOINT_URL): 'http://localhost:3000/'
